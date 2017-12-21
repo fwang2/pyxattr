@@ -26,7 +26,10 @@
 #if defined(__APPLE__)
 #include <sys/xattr.h>
 #elif defined(__linux__)
-#include <attr/xattr.h>
+#include <sys/xattr.h>
+#if !defined(ENOATTR)
+#define ENOATTR ENODATA
+#endif
 #endif
 #include <stdio.h>
 
